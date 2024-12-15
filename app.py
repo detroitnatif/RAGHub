@@ -83,7 +83,7 @@ class CourseSearchApp:
 
 
 
-        examples = ["Find me an accounting course including bookkeeping for business transactions", "Show me classes that explore the possibility of life on other planets", "Recommend a variety of courses that satisfy NS class codes", "Find me a class that bears a Writing (W) credit"]
+        examples = ["Show me all the Economics classes at the 100 level", "What kind of classes will teach me about databases?", "Can I take a Korean Class?", "I am a senior and have all my requirements, give me something fun"]
         if 'current_input' not in st.session_state:
             st.session_state['current_input'] = ""
 
