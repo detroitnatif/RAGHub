@@ -53,3 +53,38 @@ class CourseSearchApp:
         self.assistant_id = os.getenv("ASSISTANT_ID")
         self.openai_key = os.getenv("OPENAI_API_KEY")
         self.llm = OpenAI()
+
+### **Querying the Model**
+
+The application makes a simple call to the OpenAI API and streams the response for real-time interaction:
+
+```python
+stream = self.llm.beta.threads.create_and_run(
+    assistant_id=self.assistant_id,
+    thread={
+        "messages": [
+            {'role': 'user', 'content': api_message}
+        ]
+    },
+    stream=True
+)
+## Future Work
+
+- Expanding the knowledge base to include additional course attributes like professor ratings or schedule compatibility.
+- Integrating a recommendation system to suggest classes based on student preferences and academic history.
+- Allowing collaborative features for students to share and discuss courses.
+
+## Getting Started
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/yourusername/DukeRagHub.git
+   cd DukeRagHub
+   pip install -r requirements.txt
+2. Create .env
+    ASSISTANT_ID=your_assistant_id
+    OPENAI_API_KEY=your_openai_key
+3. Run it!
+    streamlit run app.py
+
+
