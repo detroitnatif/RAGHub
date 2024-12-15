@@ -26,12 +26,12 @@ class CourseSearchApp:
         
         left_col, mid_col, right_col = st.columns([4.5,5,.5])  
 
-        with mid_col:
-            st.image("blue.svg", width=50)  
+        # with mid_col:
+        #     st.image("blue.svg", width=50)  
 
         duke_blue = "#00539B"
         st.markdown(f"""
-    <h1 style='text-align: center; color: Black; font-size: 30px;'>Welcome to Discovery!</h1>
+    <h1 style='text-align: center; color: Black; font-size: 30px;'>Welcome to DukeRagHub!</h1>
     <style>
         .caption-style {{
             color: grey;
