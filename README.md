@@ -22,8 +22,11 @@ The project is built with heavy reliance on **OpenAI technologies**:
 - **OpenAI Vector Storage**: Creates a knowledge base of Duke classes by dividing course data into manageable chunks. Each chunk is transformed into an **embedding** that captures the meaning of the text and enables similarity searches.
 - **OpenAI Assistants API**: Allows the LLM to respond to queries with specificity, referencing the knowledge base, and ensuring answers are relevant to Duke classes.
 
+---
+
 ### **Data Pipeline**
-Using **BeautifulSoup**, a Python web scraping library, I built a script to extract course data from **Coursicle.com**, saving it into a `.txt` file for processing.
+
+Using **BeautifulSoup**, a Python web scraping library, a script was built to extract course data from **Coursicle.com**, saving it into a `.txt` file for processing.
 
 Sample of the scraped data:
 
@@ -42,49 +45,24 @@ The application is built using **Streamlit** to create an interactive web-based 
 2. Fetches the vector store created from the knowledge base.
 3. Provides a user-friendly interface to query Duke courses via natural language.
 
-### **Implementation**
+---
 
-Here’s the main functionality:
+## **Implementation**
 
-```python
-class CourseSearchApp:
-    def __init__(self):
-        load_dotenv(find_dotenv())
-        self.assistant_id = os.getenv("ASSISTANT_ID")
-        self.openai_key = os.getenv("OPENAI_API_KEY")
-        self.llm = OpenAI()
+### **Main Functionality**
 
-### **Querying the Model**
+The primary functionality is encapsulated in a `CourseSearchApp` class that loads environment variables for the OpenAI assistant and API key and integrates the model into the application. Below is a simplified explanation:
 
-The application makes a simple call to the OpenAI API and streams the response for real-time interaction:
+1. Load `.env` variables.
+2. Initialize OpenAI APIs with the keys.
+3. Query the model and return real-time responses.
 
-```python
-stream = self.llm.beta.threads.create_and_run(
-    assistant_id=self.assistant_id,
-    thread={
-        "messages": [
-            {'role': 'user', 'content': api_message}
-        ]
-    },
-    stream=True
-)
-## Future Work
+---
+
+## **Future Work**
 
 - Expanding the knowledge base to include additional course attributes like professor ratings or schedule compatibility.
 - Integrating a recommendation system to suggest classes based on student preferences and academic history.
 - Allowing collaborative features for students to share and discuss courses.
 
-## Getting Started
-
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/yourusername/DukeRagHub.git
-   cd DukeRagHub
-   pip install -r requirements.txt
-2. Create .env
-    ASSISTANT_ID=your_assistant_id
-    OPENAI_API_KEY=your_openai_key
-3. Run it!
-    streamlit run app.py
-
-
+---
